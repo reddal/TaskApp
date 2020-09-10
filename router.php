@@ -25,6 +25,12 @@ switch ($params[0]) {
     case 'insert': 
         InsertTask(); 
         break;
+    case 'borrar': 
+        DeleteTask($params[1]); 
+        break;
+    case 'completar': 
+        UpdateTask($params[1]); 
+        break;
     default: 
         echo('404 Page not found'); 
         break;

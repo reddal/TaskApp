@@ -34,7 +34,15 @@
               $tasksFromDb = GetTasks();
               
               foreach($tasksFromDb as $task){
-                echo '<li class="list-group-item">' . $task->title . "</li>";
+                $task->id;
+                $markGreen = "";
+                if($task->completed == 1){
+                  $markGreen = "list-group-item-success";
+                  echo '<li class="list-group-item ' . $markGreen . '">' . $task->title . ' <button type="button" class="btn btn-outline-danger"><a href="borrar/'.$task->id.'">Borrar</a></button></li>';
+          
+                }else{
+                  echo '<li class="list-group-item ' . $markGreen . '">' . $task->title . ' <button type="button" class="btn btn-outline-danger"><a href="borrar/'.$task->id.'">Borrar</a></button><button type="button" class="btn btn-outline-success"><a href="completar/'.$task->id.'">Completar</a></button></li>';
+                }
               }
             ?>
           
