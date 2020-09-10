@@ -1,14 +1,18 @@
 <?php
 
+function GetDBConnection(){
+  return  new PDO('mysql:host=localhost;'.'dbname=db_tasks;charset=utf8', 'root', '');
+}
+
 function GetTasks(){
-    $db = new PDO('mysql:host=localhost;'.'dbname=db_tasks;charset=utf8', 'root', '');
+    $db = GetDBConnection();
     $sentencia = $db->prepare("SELECT * FROM task");
     $sentencia->execute();
     return $sentencia->fetchAll(PDO::FETCH_OBJ);
 }
 
 function InsertTask(){
-    $db = new PDO('mysql:host=localhost;'.'dbname=db_tasks;charset=utf8', 'root', '');
+    $db = GetDBConnection();
     $sentencia = $db->prepare("INSERT INTO task(title, description, completed, priority) VALUES(?,?,?,?)");
     
     $completed = 0;
@@ -21,7 +25,7 @@ function InsertTask(){
 
 
 function DeleteTask($task_id){
-    $db = new PDO('mysql:host=localhost;'.'dbname=db_tasks;charset=utf8', 'root', '');
+    $db = GetDBConnection();
     $sentencia = $db->prepare("DELETE FROM task WHERE id=?");
     $sentencia->execute(array($task_id));
 
@@ -30,7 +34,7 @@ function DeleteTask($task_id){
 
 
 function UpdateTask($task_id){
-    $db = new PDO('mysql:host=localhost;'.'dbname=db_tasks;charset=utf8', 'root', '');
+    $db = GetDBConnection();
     $sentencia = $db->prepare("UPDATE task SET completed=1 WHERE id=?");
     $sentencia->execute(array($task_id));
 
