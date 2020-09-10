@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2020 at 01:15 AM
+-- Generation Time: Sep 11, 2020 at 01:34 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.32
 
@@ -32,7 +32,7 @@ CREATE TABLE `task` (
   `title` varchar(255) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `completed` tinyint(1) NOT NULL,
-  `priority` varchar(50) NOT NULL
+  `priority` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -40,15 +40,17 @@ CREATE TABLE `task` (
 --
 
 INSERT INTO `task` (`id`, `title`, `description`, `completed`, `priority`) VALUES
-(1, 'Comprar el pan lactal', 'Traer milongas', 0, 'mucha'),
-(4, 'Desde el form crear tarea', 'asd', 1, 'asd'),
-(5, 'Tarea 2', 'asdadsasd', 0, '3434'),
-(7, 'asd', 'asd', 0, 'asd'),
-(8, 'asd', 'asdasd', 0, 'asdasd'),
-(9, 'asd', 'asdasd', 0, 'asdasd'),
-(10, 'Esta deberia estar marcada como completa', 'asdasd', 1, 'asdad'),
-(11, 'asdasd', 'asd', 0, 'asd'),
-(12, 'desde SQL', 'lalalala', 1, 'asdad');
+(1, 'Comprar el pan lactalas', 'Traer milongasasd', 0, 0),
+(4, 'Desde el form crear tarea', 'asd', 1, 0),
+(5, 'Tarea 2', 'asdadsasd', 0, 3434),
+(7, 'asd', 'asd', 0, 0),
+(8, 'asd', 'asdasd', 0, 0),
+(9, 'asd', 'asdasd', 0, 0),
+(10, 'Esta deberia estar marcada como completa', 'asdasd', 1, 0),
+(11, 'asdasd', 'asd', 1, 0),
+(12, 'desde SQL', 'lalalala', 1, 0),
+(13, 'ERRRORRRR', 'asdasdasd', 0, 0),
+(14, 'asdasdddddddddddddd', 'asdasdasdasd', 0, 12);
 
 --
 -- Indexes for dumped tables
@@ -68,7 +70,7 @@ ALTER TABLE `task`
 -- AUTO_INCREMENT for table `task`
 --
 ALTER TABLE `task`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

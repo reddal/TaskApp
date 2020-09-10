@@ -62,7 +62,7 @@
           </div>
           <div class="form-group">
               <label for="priority">Prioridad</label>
-              <input class="form-control" id="priority"  name="input_priority">
+              <input type="number" class="form-control" id="priority"  name="input_priority">
             </div>
           <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="input_completed" name="input_completed">

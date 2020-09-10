@@ -32,11 +32,19 @@ function DeleteTask($task_id){
     header("Location: ".BASE_URL."home");
 }
 
-
 function UpdateTask($task_id){
     $db = GetDBConnection();
     $sentencia = $db->prepare("UPDATE task SET completed=1 WHERE id=?");
     $sentencia->execute(array($task_id));
+
+    header("Location: ".BASE_URL."home");
+}
+
+
+function UpdateAllTask($task_id, $newTitle, $newDescription){
+    $db = GetDBConnection();
+    $sentencia = $db->prepare("UPDATE task SET title=?, description=? WHERE id=?");
+    $sentencia->execute(array($newTitle, $newDescription, $task_id));
 
     header("Location: ".BASE_URL."home");
 }
