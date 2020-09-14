@@ -2,8 +2,8 @@
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
-require_once "index.php";
-require_once "database.php";
+
+require_once "Controller/TasksController.php";
 
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
@@ -14,22 +14,25 @@ if (!empty($_GET['action'])) {
 // parsea la accion Ej: sumar/1/2 --> ['sumar', 1, 2]
 $params = explode('/', $action);
 
+
+$controller = new TasksController();
+
 // determina que camino seguir según la acción
 switch ($params[0]) {
     case 'home': 
-        Home(); 
+        $controller->Home(); 
         break;
     case '': 
-        Home(); 
+        $controller->Home(); 
         break;
     case 'insert': 
-        InsertTask(); 
+        $controller->InsertTask(); 
         break;
     case 'borrar': 
-        DeleteTask($params[1]); 
+        $controller->DeleteTask($params[1]); 
         break;
     case 'completar': 
-        UpdateTask($params[1]); 
+        $controller->MarkAsCompletedTask($params[1]); 
         break;
     default: 
         echo('404 Page not found'); 
