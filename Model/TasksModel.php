@@ -19,13 +19,12 @@ class TasksModel{
           $sentencia->execute(array($title,$description,$completed,$priority));
       }
       
-      function DeleteTask($task_id){
+      function DeleteTaskDelModelo($task_id){
           $sentencia = $this->db->prepare("DELETE FROM task WHERE id=?");
           $sentencia->execute(array($task_id));
       }
       
       function MarkAsCompletedTask($task_id){
-        
           $sentencia = $this->db->prepare("UPDATE task SET completed=1 WHERE id=?");
           $sentencia->execute(array($task_id));
       

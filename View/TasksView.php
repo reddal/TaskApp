@@ -37,9 +37,9 @@ class TasksView{
                 $markGreen = "";
                 if($task->completed == 1){
                   $markGreen = "list-group-item-success";
-                  $html .= '<li class="list-group-item ' . $markGreen . '">' . $task->title . '<span class="badge badge-primary badge-pill">'. $task->description .'</span> <button type="button" class="btn btn-outline-danger"><a href="borrar/'.$task->id.'">Borrar</a></button></li>';
+                  $html .= '<li class="list-group-item ' . $markGreen . '">' . $task->title . '<span class="badge badge-primary badge-pill">'. $task->description .'</span> <button type="button" class="btn btn-outline-danger"><a href="delete/'.$task->id.'">Borrar</a></button></li>';
                 }else{
-                   $html .= '<li class="list-group-item ' . $markGreen . '">' . $task->title . '<span class="badge badge-primary badge-pill">'. $task->description .'</span> <button type="button" class="btn btn-outline-danger"><a href="borrar/'.$task->id.'">Borrar</a></button><button type="button" class="btn btn-outline-success"><a href="completar/'.$task->id.'">Completar</a></button></li>';
+                   $html .= '<li class="list-group-item ' . $markGreen . '">' . $task->title . '<span class="badge badge-primary badge-pill">'. $task->description .'</span> <button type="button" class="btn btn-outline-danger"><a href="delete/'.$task->id.'">Borrar</a></button><button type="button" class="btn btn-outline-success"><a href="completar/'.$task->id.'">Completar</a></button></li>';
                 }
               }
           

@@ -14,7 +14,6 @@ if (!empty($_GET['action'])) {
 // parsea la accion Ej: sumar/1/2 --> ['sumar', 1, 2]
 $params = explode('/', $action);
 
-
 $controller = new TasksController();
 
 // determina que camino seguir según la acción
@@ -29,7 +28,7 @@ switch ($params[0]) {
         $controller->InsertTask(); 
         break;
     case 'borrar': 
-        $controller->DeleteTask($params[1]); 
+        $controller->BorrarLaTaskQueVienePorParametro($params[1]); 
         break;
     case 'completar': 
         $controller->MarkAsCompletedTask($params[1]); 
