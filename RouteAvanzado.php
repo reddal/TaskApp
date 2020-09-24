@@ -17,6 +17,7 @@
 
     $r->addRoute("delete/:ID", "GET", "TasksController", "BorrarLaTaskQueVienePorParametro");
     $r->addRoute("completar/:ID", "GET", "TasksController", "MarkAsCompletedTask");
+    $r->addRoute("edit/:ID", "GET", "TasksController", "EditTask");
 
     //Ruta por defecto.
     $r->setDefaultRoute("TasksController", "Home");

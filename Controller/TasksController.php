@@ -30,6 +30,14 @@ class TasksController{
         $this->view->ShowHomeLocation();
     }
 
+
+    function EditTask($params = null){
+        $task_id = $params[':ID'];
+        $task = $this->model->GetTask($task_id);
+
+         $this->view->ShowEditTask($task);
+    }
+
     function BorrarLaTaskQueVienePorParametro($params = null){
         $task_id = $params[':ID'];
         $this->model->DeleteTaskDelModelo($task_id);

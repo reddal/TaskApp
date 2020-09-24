@@ -13,6 +13,12 @@ class TasksModel{
           $sentencia->execute();
           return $sentencia->fetchAll(PDO::FETCH_OBJ);
       }
+
+      function GetTask($id_task){
+        $sentencia = $this->db->prepare("SELECT * FROM task WHERE id=?");
+        $sentencia->execute(array($id_task));
+        return $sentencia->fetch(PDO::FETCH_OBJ);
+    }
       
       function InsertTask($title,$description,$completed,$priority){
           $sentencia = $this->db->prepare("INSERT INTO task(title, description, completed, priority) VALUES(?,?,?,?)");
