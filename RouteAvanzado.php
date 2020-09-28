@@ -14,11 +14,11 @@
 
     //Esto lo veo en TasksView
     $r->addRoute("insert", "POST", "TasksController", "InsertTask");
-
+    $r->addRoute("editModo/:ID","GET","TasksController","EditModo");
+    $r->addRoute("edit/:ID","POST","TasksController","EditTask");
     $r->addRoute("delete/:ID", "GET", "TasksController", "BorrarLaTaskQueVienePorParametro");
     $r->addRoute("completar/:ID", "GET", "TasksController", "MarkAsCompletedTask");
-    $r->addRoute("edit/:ID", "GET", "TasksController", "EditTask");
-
+    $r->addRoute("detail/:ID","GET","TasksController","ShowDetail");
     //Ruta por defecto.
     $r->setDefaultRoute("TasksController", "Home");
 

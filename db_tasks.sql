@@ -40,18 +40,7 @@ CREATE TABLE `task` (
 --
 
 INSERT INTO `task` (`id`, `title`, `description`, `completed`, `priority`) VALUES
-(1, 'Comprar el pan lactalas', 'Traer milongasasd', 0, 0),
-(4, 'Desde el form crear tarea', 'asd', 1, 0),
-(5, 'Tarea 2', 'asdadsasd', 0, 3434),
-(7, 'asd', 'asd', 0, 0),
-(8, 'asd', 'asdasd', 0, 0),
-(9, 'asd', 'asdasd', 0, 0),
-(10, 'Esta deberia estar marcada como completa', 'asdasd', 1, 0),
-(11, 'asdasd', 'asd', 1, 0),
-(12, 'desde SQL', 'lalalala', 1, 0),
-(13, 'ERRRORRRR', 'asdasdasd', 0, 0),
-(14, 'asdasdddddddddddddd', 'asdasdasdasd', 0, 12);
-
+(1, 'Comprar el pan lactalas', 'Traer milongas', 0, 1),
 --
 -- Indexes for dumped tables
 --

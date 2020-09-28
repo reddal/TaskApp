@@ -1,38 +1,46 @@
 <?php
+include_once './libs/smarty/Smarty.class.php';
+class TasksView
+{
+  private $smarty;
 
-require_once "./libs/smarty/Smarty.class.php";
 
-class TasksView{
+  function __construct()
+  {
+    $this->smarty = new smarty();
+  }
 
-    
+  function ShowHome($tasks)
+  {
+    $this->smarty->assign('tasks', $tasks);
 
-    private $title;
-    
+    $this->smarty->display('home.tpl');
+  }
+  function ShowEditModo($task)
+  {
+    $this->smarty->assign('task',$task[0]);
+    $this->smarty->assign('home_location',BASE_URL);
 
-    function __construct(){
-        $this->title = "Lista de Tareas";
-    }
+    $this->smarty->display('edit_modo.tpl');
+  }
 
-    function ShowHome($tasks){
+  function ShowHomeLocation()
+  {
+    header("Location: " . BASE_URL . "home");
+  }
 
-        $smarty = new Smarty();
-        $smarty->assign('titulo_s', $this->title);
-        $smarty->assign('tareas_s', $tasks);
-      
-        $smarty->display('templates/tasks.tpl'); // muestro el template 
-    }
+  function RenderDetailed($task)
+  {
+    $this->smarty->assign('task',$task[0]);
+    $this->smarty->assign('home_location',BASE_URL);
 
-    function ShowEditTask($task){
-        //TODO hacer con Smarty
-      
-    }
+    $this->smarty->display('detailed.tpl');
+  }
+  
+  function RenderError($error){
+    $this->smarty->assign('error',$error);
+    $this->smarty->assign('home_location',BASE_URL);
 
-    function ShowHomeLocation(){
-        header("Location: ".BASE_URL."home");
-    }
-
-    
+    $this->smarty->display('error.tpl');
+  }
 }
-
-
-?>
