@@ -1,7 +1,8 @@
 <?php
 
-require_once "./View/TasksView.php";
-require_once "./Model/TasksModel.php";
+require_once "View/TasksView.php";
+require_once "Model/TasksModel.php";
+require_once "Model/dbConection.php";
 
 class TasksController
 {
@@ -17,7 +18,7 @@ class TasksController
 
     function Home()
     {
-        $tasks = $this->model->GetTasks();
+        $tasks = $this->model::get();
         $this->view->ShowHome($tasks);
     }
 
@@ -29,7 +30,7 @@ class TasksController
                 $completed = 1;
             }
             if ($this->CheckIfExists($_POST['input_title']) == false) {
-                $this->model->InsertTask($_POST['input_title'], $_POST['input_description'], $completed, $_POST['input_priority']);
+                $this->model::create(['title'=>$_POST['input_title'],'description'=> $_POST['input_description'],'completed'=> $completed, 'priority'=>$_POST['input_priority']]);
                 $this->view->ShowHomeLocation();
             } else {
                 $this->view->RenderError('la tarea que intentas cargar ya existe por favor comprueba e intenta de nuevo');
@@ -42,7 +43,7 @@ class TasksController
 
     function CheckIfExists($new_task_title)
     {
-        $tasks = $this->model->GetTasks();
+        $tasks = $this->model::get();
         foreach ($tasks as $task) {
             $title = $task->title;
             if (strpos($title, $new_task_title) !== false) {
@@ -56,21 +57,21 @@ class TasksController
     function BorrarLaTaskQueVienePorParametro($params = null)
     {
         $task_id = $params[':ID'];
-        $this->model->DeleteTaskDelModelo($task_id);
+        $this->model::destroy($task_id);
         $this->view->ShowHomeLocation();
     }
 
     function MarkAsCompletedTask($params = null)
     {
         $task_id = $params[':ID'];
-        $this->model->MarkAsCompletedTask($task_id);
+        $this->model::find($task_id)->update(['completed'=> 1]);
         $this->view->ShowHomeLocation();
     }
 
     function EditModo($params = null)
     {
         $task_id = $params[':ID'];
-        $task=$this->model->GetTasks($task_id);
+        $task=$this->model::find($task_id);
         $this->view->ShowEditModo($task);
     }
 
@@ -78,19 +79,19 @@ class TasksController
     {
         $to_edit_id = $params[':ID'];
 
-        $completed = 0;
+        $completed = null;
         if (isset($_POST['input_completed'])) {
-            $completed = 1;
+            $completed = 0;
         }
 
-        $this->model->EditTask($to_edit_id, $_POST['input_title'], $_POST['input_description'], $completed, $_POST['input_priority']);
+        $this->model::find($to_edit_id)->update(['title'=>$_POST['input_title'],'description'=> $_POST['input_description'],'completed'=> $completed, 'priority'=>$_POST['input_priority']]);
         $this->view->ShowHomeLocation();
     }
     
     function ShowDetail($params = null)
     {
         $task_id = $params[':ID'];
-        $task = $this->model->GetTasks($task_id);
+        $task = $this->model::find($task_id);
         $this->view->RenderDetailed($task);
     }
 }

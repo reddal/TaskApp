@@ -18,7 +18,8 @@ class TasksView
   }
   function ShowEditModo($task)
   {
-    $this->smarty->assign('task',$task[0]);
+
+    $this->smarty->assign('task',$task);
     $this->smarty->assign('home_location',BASE_URL);
 
     $this->smarty->display('edit_modo.tpl');
@@ -31,7 +32,7 @@ class TasksView
 
   function RenderDetailed($task)
   {
-    $this->smarty->assign('task',$task[0]);
+    $this->smarty->assign('task',$task);
     $this->smarty->assign('home_location',BASE_URL);
 
     $this->smarty->display('detailed.tpl');
